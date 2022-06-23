@@ -4,7 +4,7 @@ import logging
 import webbrowser
 from pathlib import Path
 
-import pytest
+from pytest import fixture
 from github import Github
 from tests import settings
 from utils.utils import dict_to_obj, invoke_htm_file
@@ -24,7 +24,7 @@ def pytest_addoption(parser):
         parser.addoption(F"--{item}", action='store', default=value)
 
 
-@pytest.fixture(scope="function")
+@fixture(scope="function")
 def tests_data(request):
     data = dict()
     for item in settings_items:
@@ -32,13 +32,13 @@ def tests_data(request):
     return dict_to_obj(data)
 
 
-@pytest.fixture(scope="function")
+@fixture(scope="function")
 def github_client(tests_data):
     github_client = Github(tests_data.token)
     yield github_client
 
 
-@pytest.fixture(scope="function")
+@fixture(scope="function")
 def tests_client(github_client, tests_data):
     tests_client = TestsClient(github_client, tests_data)
     tests_client.tear_down()

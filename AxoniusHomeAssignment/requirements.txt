@@ -1,0 +1,3 @@
+pytest~=7.1.2
+pygithub~=1.55
+setuptools~=60.2.0

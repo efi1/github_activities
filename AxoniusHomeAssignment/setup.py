@@ -1,6 +1,10 @@
 """Minimal setup file for github assignment."""
 
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from distutils.core import setup
+
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
 
 setup(
     name='github_activities',
@@ -13,5 +17,6 @@ setup(
     author='Efi Ovadia',
     author_email='efovadia@gmail.com',
     license='proprietary',
-    install_requires=['pytest', 'GitPython', 'PyGithub', 'pytest-metadata']
+    # install_requires=['pytest', 'GitPython', 'PyGithub']
+    install_requires = required
 )

@@ -8,7 +8,7 @@ from pytest import fixture
 from github import Github
 from tests import settings
 from utils.utils import dict_to_obj, invoke_htm_file
-from clients.tests_client import TestsClient
+from src.clients.tests_client import TestsClient
 
 logging.getLogger()
 

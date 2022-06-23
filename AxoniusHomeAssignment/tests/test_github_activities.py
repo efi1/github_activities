@@ -25,7 +25,7 @@ def test_clone(tests_client, tests_data):
     assert os.path.exists(os.path.join(tests_data.target_folder, tests_data.repo_name)) is True, 'clone failed'
 
 
-# @pytest.mark.skip("WIP")
+@pytest.mark.skip("WIP")
 def test_branch_creation(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -68,7 +68,7 @@ def test_edit_readme(tests_client, tests_data):
     assert tests_client.get_changes(cloned_repo) == ['README.txt'], 'no git tracking for modify in README.txt file'
 
 
-# @pytest.mark.skip("WIP")
+@pytest.mark.skip("Jenkins issues - needs to created a tmp directory for clonning")
 def test_commit_changes(github_client, tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -89,7 +89,7 @@ def test_commit_changes(github_client, tests_client, tests_data):
     assert len(tests_client.get_stage(cloned_repo)) == 0, 'after commit: changed files are still in stage'
 
 
-# @pytest.mark.skip("WIP")
+@pytest.mark.skip("Jenkins issues - needs to created a tmp directory for clonning")
 def test_push_and_verify(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

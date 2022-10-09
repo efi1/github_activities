@@ -1,0 +1,6 @@
+AxoniusHomeAssignment/.idea
+AxoniusHomeAssignment/venv/
+AxoniusHomeAssignment/.pytest_cache
+AxoniusHomeAssignment/build/
+AxoniusHomeAssignment/dist/
+AxoniusHomeAssignment/logfile.log

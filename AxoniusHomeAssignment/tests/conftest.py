@@ -3,14 +3,13 @@ import os  # being used in func: pytest_addoption
 import logging
 import webbrowser
 from pathlib import Path
-
 from pytest import fixture
 from github import Github
 from tests import settings
 from utils.utils import dict_to_obj, invoke_htm_file
 from src.clients.tests_client import TestsClient
 
-logging.getLogger()
+# logging.getLogger()
 
 settings_items = [i for i in settings.__dir__() if not i.startswith('_')]
 
@@ -24,7 +23,7 @@ def pytest_addoption(parser):
         parser.addoption(F"--{item}", action='store', default=value)
 
 
-@fixture(scope="function")
+@fixture(scope="session")
 def tests_data(request):
     data = dict()
     for item in settings_items:
@@ -32,10 +31,9 @@ def tests_data(request):
     return dict_to_obj(data)
 
 
-@fixture(scope="function")
+@fixture(scope="session")
 def github_client(tests_data):
-    github_client = Github(tests_data.token)
-    yield github_client
+    return Github(login_or_token=tests_data.token)
 
 
 @fixture(scope="function")

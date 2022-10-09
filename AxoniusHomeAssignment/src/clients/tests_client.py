@@ -1,6 +1,8 @@
 import logging
 import os
 import stat
+import time
+
 from git import Repo, InvalidGitRepositoryError
 
 logging.getLogger()
@@ -60,6 +62,7 @@ class TestsClient(object):
             repo = self.user.get_repo(self.repo_name)
             repo.delete()
             logging.info(F"repo {self.repo_name} was deleted")
+        time.sleep(1)
         assert self.is_repo_exist() is False, F"repo {self.repo_name} wrongly exist"
 
     def clear_clone(self, target_folder=None):

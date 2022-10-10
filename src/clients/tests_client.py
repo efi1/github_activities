@@ -48,18 +48,13 @@ class TestsClient(object):
     def get_cloned_repo(self, forked_repo):
         self.clear_clone()  # clone exist in tests_data.target_folder
         logging.info('local cloned repo deleted successfully')
-        clone_url = forked_repo.clone_url
-        # clone_url = forked_repo.git_url
-        # clone_url = 'ssh://git@github.com/efi1/githubtraining/hellogitworld'
-        clone_url = 'git@github.com:efi1/hellogitworld.git'
+        clone_url = forked_repo.ssh_url
         os.makedirs(self.target_folder)
         try:
             Repo(self.target_folder)
         except InvalidGitRepositoryError:
             logging.info('before repo init - no repository yet')
         cloned_repo = Repo.clone_from(clone_url, os.path.join(self.target_folder, self.repo_name))
-        # cloned_path = os.path.join(self.target_folder, self.repo_name)
-        #git remote set-url origin git@github.com:efi1/github_activities.git
         return cloned_repo
 
     def delete_repo(self):

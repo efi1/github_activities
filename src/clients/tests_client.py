@@ -48,7 +48,7 @@ class TestsClient(object):
     def get_cloned_repo(self, forked_repo):
         self.clear_clone()  # clone exist in tests_data.target_folder
         logging.info('local cloned repo deleted successfully')
-        clone_url = forked_repo.ssh_url
+        clone_url = forked_repo.ssh_url # to enable push without credentials later on
         os.makedirs(self.target_folder)
         try:
             Repo(self.target_folder)

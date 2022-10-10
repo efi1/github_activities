@@ -4,7 +4,7 @@ import pytest
 logging.getLogger()
 
 
-@pytest.mark.skip("WIP")
+# @pytest.mark.skip("WIP")
 def test_fork_repo(tests_client, tests_data):
     user = tests_client.user
     # check if forked repo exist
@@ -25,7 +25,7 @@ def test_clone(tests_client, tests_data):
     assert os.path.exists(os.path.join(tests_data.target_folder, tests_data.repo_name)) is True, 'clone failed'
 
 
-@pytest.mark.skip("temporarily skipped")
+# @pytest.mark.skip("temporarily skipped")
 def test_branch_creation(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -38,7 +38,7 @@ def test_branch_creation(tests_client, tests_data):
     assert cloned_repo.active_branch == new_branch
 
 
-@pytest.mark.skip("temporarily skipped")
+# @pytest.mark.skip("temporarily skipped")
 def test_create_new_file(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -51,7 +51,7 @@ def test_create_new_file(tests_client, tests_data):
     assert ''.join(untracked_files) == tests_data.file_name, "created file wrongly not tracked by git"
 
 
-@pytest.mark.skip("temporarily skipped")
+# @pytest.mark.skip("temporarily skipped")
 def test_edit_readme(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

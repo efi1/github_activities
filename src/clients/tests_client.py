@@ -13,7 +13,7 @@ class TestsClient(object):
         self.org_name = tests_data.org_name
         self.github_client = github_client
         self.repo_name = tests_data.repo_name
-        self.target_folder = tests_data.target_folder
+        self.target_folder = tests_data.git_tests_resource
         self.user = self.github_client.get_user()
 
     def is_repo_exist(self, repo_name=None):
@@ -46,7 +46,7 @@ class TestsClient(object):
         return repo
 
     def get_cloned_repo(self, forked_repo):
-        self.clear_clone()  # clone exist in tests_data.target_folder
+        self.clear_clone()  # clone exist in tests_data.git_tests_resource
         logging.info('local cloned repo deleted successfully')
         clone_url = forked_repo.ssh_url # to enable push without credentials later on
         os.makedirs(self.target_folder)

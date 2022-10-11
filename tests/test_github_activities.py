@@ -17,12 +17,12 @@ def test_fork_repo(tests_client, tests_data):
 # @pytest.mark.skip("temporarily skipped")
 def test_clone(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
-    assert os.path.exists(tests_data.target_folder) == False, F"{tests_data.target_folder} directory is not empty"
+    assert os.path.exists(tests_data.git_tests_resource) == False, F"{tests_data.git_tests_resource} directory is not empty"
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
     working_dir = cloned_repo.working_dir
     # check that cloned was a successful
-    assert working_dir == os.path.join(tests_data.target_folder, tests_data.repo_name), 'clone failed'
-    assert os.path.exists(os.path.join(tests_data.target_folder, tests_data.repo_name)) is True, 'clone failed'
+    assert working_dir == os.path.join(tests_data.git_tests_resource, tests_data.repo_name), 'clone failed'
+    assert os.path.exists(os.path.join(tests_data.git_tests_resource, tests_data.repo_name)) is True, 'clone failed'
 
 
 # @pytest.mark.skip("temporarily skipped")

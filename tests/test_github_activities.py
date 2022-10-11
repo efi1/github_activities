@@ -89,7 +89,7 @@ def test_commit_changes(github_client, tests_client, tests_data):
     assert len(tests_client.get_stage(cloned_repo)) == 0, 'after commit: changed files are still in stage'
 
 
-@pytest.mark.skip("Jenkins issues - needs to created a tmp directory for clonning")
+# @pytest.mark.skip("Jenkins issues - needs to created a tmp directory for clonning")
 def test_push_and_verify(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

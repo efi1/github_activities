@@ -25,7 +25,7 @@ def test_clone(tests_client, tests_data):
     assert os.path.exists(os.path.join(tests_data.git_tests_resource, tests_data.repo_name)) is True, 'clone failed'
 
 
-@pytest.mark.skip("temporarily skipped")
+# @pytest.mark.skip("temporarily skipped")
 def test_branch_creation(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

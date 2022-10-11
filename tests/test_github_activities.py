@@ -68,7 +68,7 @@ def test_edit_readme(tests_client, tests_data):
     assert tests_client.get_changes(cloned_repo) == ['README.txt'], 'no git tracking for modify in README.txt file'
 
 
-@pytest.mark.skip("Jenkins issues - needs to created a tmp directory for clonning")
+# @pytest.mark.skip("Jenkins issues - needs to created a tmp directory for clonning")
 def test_commit_changes(github_client, tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

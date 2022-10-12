@@ -4,7 +4,7 @@ import pytest
 logging.getLogger()
 
 
-# @pytest.mark.skip("WIP")
+@pytest.mark.dev_mode
 def test_fork_repo(tests_client, tests_data):
     user = tests_client.user
     # check if forked repo exist
@@ -14,7 +14,6 @@ def test_fork_repo(tests_client, tests_data):
     assert forked_repo.name == tests_data.repo_name
 
 
-# @pytest.mark.skip("temporarily skipped")
 def test_clone(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     assert os.path.exists(tests_data.git_tests_resource) == False, F"{tests_data.git_tests_resource} directory is not empty"
@@ -25,7 +24,6 @@ def test_clone(tests_client, tests_data):
     assert os.path.exists(os.path.join(tests_data.git_tests_resource, tests_data.repo_name)) is True, 'clone failed'
 
 
-# @pytest.mark.skip("temporarily skipped")
 def test_branch_creation(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -38,7 +36,6 @@ def test_branch_creation(tests_client, tests_data):
     assert cloned_repo.active_branch == new_branch
 
 
-@pytest.mark.skip("temporarily skipped")
 def test_create_new_file(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -51,7 +48,6 @@ def test_create_new_file(tests_client, tests_data):
     assert ''.join(untracked_files) == tests_data.file_name, "created file wrongly not tracked by git"
 
 
-@pytest.mark.skip("temporarily skipped")
 def test_edit_readme(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -68,7 +64,6 @@ def test_edit_readme(tests_client, tests_data):
     assert tests_client.get_changes(cloned_repo) == ['README.txt'], 'no git tracking for modify in README.txt file'
 
 
-@pytest.mark.skip("temporarily skipped")
 def test_commit_changes(github_client, tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)
@@ -89,7 +84,6 @@ def test_commit_changes(github_client, tests_client, tests_data):
     assert len(tests_client.get_stage(cloned_repo)) == 0, 'after commit: changed files are still in stage'
 
 
-@pytest.mark.skip("temporarily skipped")
 def test_push_and_verify(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

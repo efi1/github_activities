@@ -18,5 +18,5 @@ setup(
     author_email='efovadia@gmail.com',
     license='proprietary',
     # install_requires=['pytest', 'GitPython', 'PyGithub']
-    install_requires = required
+    install_requires = [required, 'pytest-html']
 )

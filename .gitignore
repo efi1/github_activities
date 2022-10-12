@@ -4,3 +4,7 @@ venv/
 build/
 dist/
 logfile.log
+ src/clients/__pycache__/
+ target/report.html
+ target/assets
+ src/github_activities.egg-info/

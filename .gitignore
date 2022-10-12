@@ -5,6 +5,6 @@ build/
 dist/
 logfile.log
  src/clients/__pycache__/
- target/report.html
- target/assets
+ target/xml/assets
+ target/html/assets
  src/github_activities.egg-info/

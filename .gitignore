@@ -4,9 +4,11 @@ venv/
 build/
 dist/
 logfile.log
+<<<<<<< HEAD
 src/clients/__pycache__/
 target/report.html
 target/assets
 src/github_activities.egg-info/
 tests/__pycache__/
-
+target/xml/assets
+target/html/assets

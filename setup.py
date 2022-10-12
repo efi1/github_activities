@@ -17,6 +17,6 @@ setup(
     author='Efi Ovadia',
     author_email='efovadia@gmail.com',
     license='proprietary',
-    # install_requires=['pytest', 'GitPython', 'PyGithub']
-    install_requires = [required, 'pytest-html']
+    # install_requires=['pytest', 'GitPython']
+    install_requires = [required, 'pytest-html', 'GitPython']
 )

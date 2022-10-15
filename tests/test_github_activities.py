@@ -14,6 +14,7 @@ def test_fork_repo(tests_client, tests_data):
     assert forked_repo.name == tests_data.repo_name
 
 
+@pytest.mark.dev_mode
 def test_clone(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     assert os.path.exists(tests_data.git_tests_resource) == False, F"{tests_data.git_tests_resource} directory is not empty"

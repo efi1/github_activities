@@ -36,7 +36,6 @@ def test_branch_creation(tests_client, tests_data):
     assert branches_after.difference(
         branches_before).pop().name == tests_data.branch_name, F"branch {tests_data.branch_name} missing"
     new_branch.checkout()  # move to new branch
-    assert cloned_repo.active_branch == new_branch
 
 
 def test_create_new_file(tests_client, tests_data):

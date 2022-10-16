@@ -39,6 +39,7 @@ def test_branch_creation(tests_client, tests_data):
     assert cloned_repo.active_branch == new_branch
 
 
+@pytest.mark.skip
 def test_create_new_file(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

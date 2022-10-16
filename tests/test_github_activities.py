@@ -27,7 +27,6 @@ def test_clone(tests_client, tests_data):
     assert True == False, 'failed due to jenkins testing'
 
 
-@pytest.mark.skip("WIP")
 def test_branch_creation(tests_client, tests_data):
     forked_repo = tests_client.get_forked_repo()
     cloned_repo = tests_client.get_cloned_repo(forked_repo)

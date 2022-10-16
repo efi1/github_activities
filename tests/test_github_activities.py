@@ -24,7 +24,6 @@ def test_clone(tests_client, tests_data):
     # check that cloned was a successful
     assert working_dir == os.path.join(tests_data.git_tests_resource, tests_data.repo_name), 'clone failed'
     assert os.path.exists(os.path.join(tests_data.git_tests_resource, tests_data.repo_name)) is True, 'clone failed'
-    assert True == False, 'failed due to jenkins testing'
 
 
 def test_branch_creation(tests_client, tests_data):

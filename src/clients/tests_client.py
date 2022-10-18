@@ -12,7 +12,7 @@ from git import RemoteProgress
 
 class MyProgressPrinter(RemoteProgress):
     def update(self, op_code, cur_count, max_count=None, message=""):
-        print(
+        logging.info(
             op_code,
             cur_count,
             max_count,

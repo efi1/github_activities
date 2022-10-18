@@ -55,6 +55,7 @@ class TestsClient(object):
         except InvalidGitRepositoryError:
             logging.info('before repo init - no repository yet')
         cloned_repo = Repo.clone_from(clone_url, os.path.join(self.target_folder, self.repo_name))
+        time.sleep(1)
         return cloned_repo
 
     def delete_repo(self):

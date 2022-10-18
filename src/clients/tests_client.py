@@ -7,6 +7,19 @@ from git import Repo, InvalidGitRepositoryError
 
 logging.getLogger()
 
+from git import RemoteProgress
+
+
+class MyProgressPrinter(RemoteProgress):
+    def update(self, op_code, cur_count, max_count=None, message=""):
+        print(
+            op_code,
+            cur_count,
+            max_count,
+            cur_count / (max_count or 100.0),
+            message or "NO MESSAGE",
+        )
+
 
 class TestsClient(object):
     def __init__(self, github_client, tests_data):
@@ -48,13 +61,15 @@ class TestsClient(object):
     def get_cloned_repo(self, forked_repo):
         self.clear_clone()  # clone exist in tests_data.git_tests_resource
         logging.info('local cloned repo deleted successfully')
-        clone_url = forked_repo.ssh_url # to enable push without credentials later on
+        clone_url = forked_repo.ssh_url  # to enable push without credentials later on
         os.makedirs(self.target_folder)
         try:
             Repo(self.target_folder)
         except InvalidGitRepositoryError:
             logging.info('before repo init - no repository yet')
-        cloned_repo = Repo.clone_from(clone_url, os.path.join(self.target_folder, self.repo_name))
+        cloned_repo = Repo.clone_from(clone_url, os.path.join(self.target_folder, self.repo_name),
+                                      progress=MyProgressPrinter())
+        time.sleep(2)
         return cloned_repo
 
     def delete_repo(self):
@@ -79,7 +94,6 @@ class TestsClient(object):
             os.rmdir(target_folder)
         assert os.path.exists(target_folder) == False
 
-
     @classmethod
     def get_stage(cls, cloned_repo):
         return [item.a_path for item in cloned_repo.index.diff(cloned_repo.head.commit)]
@@ -88,12 +102,8 @@ class TestsClient(object):
     def get_changes(cls, cloned_repo):
         return [item.a_path for item in cloned_repo.index.diff(None)]
 
-
     def tear_down(self):
         logging.info('in tearDown...')
         self.delete_repo()
         self.clear_clone()
         # self.clear_htm_file()
-
-
-

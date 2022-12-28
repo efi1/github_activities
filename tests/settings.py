@@ -1,5 +1,5 @@
 repo_path = "https://api/github.com/githubtraining/hellogitworld"
-token = "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"
+token = "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"
 repo_name = "settings.repo_path.split('/')[-1]"
 org_name =  "settings.repo_path.split('/')[-2]"
 git_tests_resource = "F'D:{os.sep}github_assignment'"

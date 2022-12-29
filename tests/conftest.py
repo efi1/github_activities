@@ -1,5 +1,7 @@
 """Shared fixtures."""
 import os  # being used in func: pytest_addoption
+from pathlib import Path # being used in func: pytest_addoption
+
 
 from pytest import fixture
 from github import Github

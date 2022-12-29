@@ -23,4 +23,4 @@ class HtmlReport(object):
 
 
 def dict_to_obj(d):
-    return json.loads(json.dumps(d), object_hook=obj)
+    return json.loads(json.dumps(d), object_pairs_hook=obj)

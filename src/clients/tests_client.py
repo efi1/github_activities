@@ -81,6 +81,7 @@ class TestsClient(object):
 
     def clear_clone(self, target_folder=None):
         target_folder = target_folder if target_folder else self.target_folder
+        logging.info(F"\n\n\n ********  target folder: {self.target_folder} ********* \n\n\n")
         logging.info(F"deleting local repository in path {target_folder}")
         if os.path.exists(target_folder):
             for root, dirs, files in os.walk(target_folder, topdown=False):

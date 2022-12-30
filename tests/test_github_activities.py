@@ -5,7 +5,7 @@ import pytest
 logging.getLogger()
 
 
-@pytest.mark.dev_mode
+# @pytest.mark.dev_mode
 def test_fork_repo(tests_client, tests_data):
     user = tests_client.user
     # check if forked repo exist

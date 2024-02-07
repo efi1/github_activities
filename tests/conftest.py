@@ -4,7 +4,7 @@ from pathlib import Path # being used in func: pytest_addoption
 
 
 from pytest import fixture
-from github import Github
+from github import Github, Auth
 from tests import settings
 from utils.utils import dict_to_obj
 from src.clients.tests_client import TestsClient
@@ -13,7 +13,7 @@ from src.clients.tests_client import TestsClient
 settings_items = [i for i in settings.__dir__() if not i.startswith('_')]
 
 
-def pytest_addoption(parser):
+def pytest_addoption(parser) -> None:
     for item in settings_items:
         try:
             value = eval(getattr(settings, item))

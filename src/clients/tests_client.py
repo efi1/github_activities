@@ -1,13 +1,10 @@
 import logging
 import os
 import stat
-import time
-
+from git import RemoteProgress
 from git import Repo, InvalidGitRepositoryError, rmtree
 
 logging.getLogger()
-
-from git import RemoteProgress
 
 
 class MyProgressPrinter(RemoteProgress):
@@ -98,4 +95,3 @@ class TestsClient(object):
         logging.info('in tearDown...')
         self.delete_repo()
         self.clear_clone()
-

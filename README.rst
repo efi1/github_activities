@@ -14,6 +14,11 @@ Usage:
 
     e.g. python -m pytest --token <token hush>
 
+    to execute a specific test case:
+    python -m pytest --token <token> -k test_clone
+
+    Alternatively, you may mark a test with   @pytest.mark.dev_mode see pytest.ini file
+
     if not using a flag for a certain variable it will be taken from the setting.py
 
 

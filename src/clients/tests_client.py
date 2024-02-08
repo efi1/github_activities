@@ -3,7 +3,7 @@ import os
 import stat
 import time
 
-from git import Repo, InvalidGitRepositoryError
+from git import Repo, InvalidGitRepositoryError, rmtree
 
 logging.getLogger()
 
@@ -63,6 +63,7 @@ class TestsClient(object):
         logging.info('local cloned repo deleted successfully')
         clone_url = forked_repo.ssh_url  # to enable push without credentials later on
         os.makedirs(self.target_folder)
+        os.chmod(self.target_folder, stat.S_IWUSR)
         try:
             Repo(self.target_folder)
         except InvalidGitRepositoryError:
@@ -76,22 +77,14 @@ class TestsClient(object):
             repo = self.user.get_repo(self.repo_name)
             repo.delete()
             logging.info(F"repo {self.repo_name} was deleted")
-        time.sleep(1)
         assert self.is_repo_exist() is False, F"repo {self.repo_name} wrongly exist"
 
     def clear_clone(self, target_folder=None):
         target_folder = target_folder if target_folder else self.target_folder
         logging.info(F"deleting local repository in path {target_folder}")
         if os.path.exists(target_folder):
-            for root, dirs, files in os.walk(target_folder, topdown=False):
-                for name in files:
-                    filename = os.path.join(root, name)
-                    os.chmod(filename, stat.S_IWUSR)
-                    os.remove(filename)
-                for name in dirs:
-                    os.rmdir(os.path.join(root, name))
-            os.rmdir(target_folder)
-        assert os.path.exists(target_folder) == False
+            rmtree(target_folder)
+        assert os.path.exists(target_folder) is False
 
     @classmethod
     def get_stage(cls, cloned_repo):
@@ -105,4 +98,4 @@ class TestsClient(object):
         logging.info('in tearDown...')
         self.delete_repo()
         self.clear_clone()
-        # self.clear_htm_file()
+

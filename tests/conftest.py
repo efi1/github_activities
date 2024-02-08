@@ -32,7 +32,7 @@ def tests_data(request):
 
 @fixture(scope="session")
 def github_client(tests_data):
-    return Github(login_or_token=tests_data.token)
+    return Github(auth=(Auth.Token(tests_data.token)))
 
 
 @fixture(scope="function")

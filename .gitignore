@@ -15,3 +15,4 @@ src/clients/__pycache__/**
 src/clients/__pycache__/
 pyvenv.cfg
 other/**
+tests_resources/**

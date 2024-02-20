@@ -1,5 +1,5 @@
 repo_path = "https://github.com/api/githubtraining/hellogitworld"
-token = "to be given"
+token = "<token place holder>"
 repo_name = "settings.repo_path.split('/')[-1]"
 org_name = "settings.repo_path.split('/')[-2]"
 git_tests_resource = "F'{Path(__file__).parent.parent}{os.sep}tests_resources'"

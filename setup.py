@@ -1,7 +1,7 @@
 """Minimal setup file for github assignment."""
 
-from setuptools import find_packages
-from distutils.core import setup
+from setuptools import find_packages, setup
+# from distutils.core import setup
 
 with open('requirements.txt') as f:
     required = f.read().splitlines()

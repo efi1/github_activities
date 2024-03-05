@@ -6,7 +6,11 @@ This assignment validating various Github activities using GitPython API
 
 Usage:
 
-    python setup.py install (please run it first)
+    First install the requirements.
+
+    Then, run setup.py by typing:
+
+        python setup.py install
 
     all testing variables resides in settings.py under tests folder
 
